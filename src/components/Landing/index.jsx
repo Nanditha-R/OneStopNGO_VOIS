@@ -114,16 +114,112 @@ function Landing() {
       })
     }
   
-    const removeNgo = id => {
-      deleteDoc(doc(db, "ngo", id))
+    const [vols, setVols] = useState([])
+    const [form_v, setForm_v] = useState({
+      title: "",
+      desc: "",
+      cities: [],
+      members: []
+    })
+    const [popupActive_state, setPopupActive_state] = useState(false)
+  
+    const volsCollectionRef = collection(db, "vol")
+  
+    useEffect(() => {
+      onSnapshot(volsCollectionRef, snapshot => {
+        setVols(snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            viewing: false,
+            ...doc.data()
+          }
+        }))
+      })
+    }, [])
+  
+    const handleViewState = id => {
+      const volsClone = [...vols]
+  
+      volsClone.forEach(vol => {
+        if (vol.id === id) {
+          vol.viewing = !vol.viewing
+        } else {
+          vol.viewing = false
+        }
+      })
+  
+      setVols(volsClone)
     }
   
+    const handleSubmitState = e => {
+      e.preventDefault()
+  
+      if (
+        !form_v.title ||
+        !form_v.desc ||
+        !form_v.cities ||
+        !form_v.members
+      ) {
+        alert("Please fill out all fields")
+        return
+      }
+  
+      addDoc(volsCollectionRef, form_v)
+  
+      setForm_v({
+        title: "",
+        desc: "",
+        cities: [],
+        members: []
+      })
+  
+      setPopupActive_state(false)
+    }
+  
+    const handleCitiesState = (e, i) => {
+      const citiesClone = [...form_v.cities]
+  
+      citiesClone[i] = e.target.value
+  
+      setForm_v({
+        ...form_v,
+        cities: citiesClone
+      })
+    }
+  
+    const handleMembersState = (e, i) => {
+      const membersClone = [...form_v.members]
+  
+      membersClone[i] = e.target.value
+  
+      setForm_v({
+        ...form_v,
+        members: membersClone
+      })
+    }
+  
+    const handleCitiesStateCount = () => {
+      setForm_v({
+        ...form_v,
+        cities: [...form_v.cities, ""]
+      })
+    }
+  
+    const handleMembersStateCount = () => {
+      setForm_v({
+        ...form_v,
+        members: [...form_v.members, ""]
+      })
+    }
+  
+
+
     return(
         <>
         
         <h1>NGO Gallery</h1>
         <div className="App">
-        <p style={{"color":"black"}}>Welcome to the NGO gallery. NGOs and their details can be added here. It will be moderated by the admins. Scroll down to connect with volunteers and leaders in the chat room. Chat rooms are custom created for the NGOs added here.</p>
+        <p style={{"color":"black"}}>Welcome to the NGO gallery. NGOs and their details can be added here. It will be moderated by the admins. Scroll down to reach out to other volunteer groups or connect with volunteers and leaders in the chat room. Chat rooms are custom created for the NGOs added here.</p>
         <button onClick={() => setPopupActive(!popupActive)}>Add ngo</button>
   
         <div className="ngos">
@@ -215,8 +311,105 @@ function Landing() {
           </div>
         </div>}
       </div>
+      <h1>Volunteer Groups</h1>
+      <div className="App">
+        
+        <button onClick={() => setPopupActive_state(!popupActive_state)}>Add Groups</button>
+  
+        <div className="ngos">
+          { vols.map((vol, i) => (
+            <div className="ngo" key={vol.id}>
+              <h3>{ vol.title }</h3>
+  
+              <p dangerouslySetInnerHTML={{ __html: vol.desc }}></p>
+  
+              { vol.viewing && <div>
+                <h4>Cities</h4>
+                <ul>
+                  { vol.cities.map((cities, i) => (
+                    <li key={i}>{ cities }</li>
+                  ))}
+                </ul>
+  
+                <h4>Members</h4>
+                <ol>
+                  { vol.members.map((members, i) => (
+                    <li key={i}>{ members }</li>
+                  ))}
+                </ol>
+              </div>}
+  
+              <div className="buttons">
+                <button onClick={() => handleViewState(vol.id)}>View { vol.viewing ? 'less' : 'more' }</button>
+            
+              </div>
+            </div>
+          ))}
+        </div>
+  
+        { popupActive_state && <div className="popup">
+          <div className="popup-inner">
+            <h2>Add a new volunteer group</h2>
+  
+            <form onSubmit={handleSubmitState}>
+  
+              <div className="form-group">
+                <label style={{"color":"white"}}>Title</label>
+                <input 
+                  type="text" 
+                  value={form_v.title} 
+                  onChange={e => setForm_v({...form_v, title: e.target.value})} />
+              </div>
+  
+              <div className="form-group">
+                <label style={{"color":"white"}}>Description</label>
+                <textarea 
+                  type="text" 
+                  value={form_v.desc} 
+                  onChange={e => setForm_v({...form_v, desc: e.target.value})} />
+              </div>
+  
+              <div className="form-group">
+                <label style={{"color":"white"}}>Cities</label>
+                {
+                  form_v.cities.map((cities, i) => (
+                    <input 
+                      type="text"
+                      key={i}
+                      value={cities} 
+                      onChange={e => handleCitiesState(e, i)} />
+                  ))
+                }
+                <button type="button" onClick={handleCitiesStateCount}>Add City</button>
+              </div>
+  
+              <div className="form-group">
+                <label style={{"color":"white"}}>Members</label>
+                {
+                  form_v.members.map((members, i) => (
+                    <textarea 
+                      type="text"
+                      key={i}
+                      value={members} 
+                      onChange={e => handleMembersState(e, i)} />
+                  ))
+                }
+                <button type="button" onClick={handleMembersStateCount}>Add Member</button>
+              </div>
+  
+              <div className="buttons">
+                <button type="submit">Submit</button>
+                <button type="button" class="remove" onClick={() => setPopupActive_state(false)}>Close</button>
+              </div>
+            </form>
+          </div>
+        </div>}
+      </div>
 
-            <h2 style={{"color":"black"}}>Choose a Chat Room</h2>
+
+
+
+            <h1>Connect with us</h1>
             <ul className="chat-room-list">
                 {chatRooms.map((room) => (
                     <li key={room.id}>
@@ -227,4 +420,4 @@ function Landing() {
             </>
     );
 }
-export {Landing} ;
+export {Landing};
