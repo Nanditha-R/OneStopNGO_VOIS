@@ -5,7 +5,7 @@ import NavBar from '../Navbar/Navbar';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
 import Home from '../pages/Home';
-
+import Events from '../pages/Events';
 function AuthenticatedApp() {
     return (
         <BrowserRouter>
@@ -15,6 +15,7 @@ function AuthenticatedApp() {
                 <Route path='/homepage' element={<Home/>}/>
                 <Route path='/aboutpage' element={<About/>} />
                 <Route path='/contactpage' element={<Contact/>} />
+                <Route path='/eventspage' element={<Events/>}/>
                 <Route path="/room/:id" element={<ChatRoom />} />
             </Routes>
         </BrowserRouter>

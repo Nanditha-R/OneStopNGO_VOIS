@@ -6,7 +6,7 @@ const chatRooms = [
     { id: 'plastic', title: 'Say NO to plastic' },
     { id: 'teen', title: 'Teen Team' },
     { id: 'yes', title: 'Save Children'},
-    { id: 'yess', title: 'Save Women'},
+    { id: 'yess', title: 'Girl Power'},
     
 ];
 

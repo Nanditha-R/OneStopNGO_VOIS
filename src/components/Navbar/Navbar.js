@@ -30,6 +30,17 @@ function NavBar() {
             <li className="nav-item">
               <NavLink
                 exact
+                to="/eventspage"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                Events
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
                 to="/aboutpage"
                 activeClassName="active"
                 className="nav-links"

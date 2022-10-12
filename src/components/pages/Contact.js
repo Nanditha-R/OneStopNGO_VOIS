@@ -36,13 +36,13 @@ const Contact= () => {
       target="_blank"
     >
       <div>
-        <input style={{"width":"100%","padding": "12px 20px","margin": "8px 0"}} type="text" placeholder="Your name" name="name" required />
+        <input style={{"width":"100%","padding": "12px 20px","margin": "8px 0","color":"black"}} type="text" placeholder="Your name" name="name" required />
       </div>
       <div>
-        <input style={{"width":"100%","padding": "12px 20px","margin": "8px 0"}} type="email" placeholder="Email" name="email" required />
+        <input style={{"width":"100%","padding": "12px 20px","margin": "8px 0","color":"black"}} type="email" placeholder="Email" name="email" required />
       </div>
       <div>
-        <textarea style={{"width":"100%","padding": "12px 20px","margin": "8px 0"}} placeholder="Your message" name="message" required />
+        <textarea style={{"width":"100%","padding": "12px 20px","margin": "8px 0","color":"black"}} placeholder="Your message" name="message" required />
       </div>
       <div>
         <button style={{"width":"100%","padding": "12px 20px","margin": "8px 0", "backgroundColor":"#0C2340","color":"white"}} type="submit"> Send a message </button>
@@ -50,7 +50,7 @@ const Contact= () => {
     </form>
     <footer >
     
-            <div style={{"padding":"5px","flex":"1","display":"inline-block","boxSizing":"10px"}}> 
+            <div style={{"padding":"5px","flex":"1","display":"inline-block","boxSizing":"10px","color":"black"}}> 
             
                 
                 <a  class = "fab fa-react fa-2x"
@@ -62,7 +62,7 @@ const Contact= () => {
                 </a>
             </div>
 
-            <div style={{"padding":"5px","flex":"1","display":"inline-block","boxSizing":"10px"}}> 
+            <div style={{"padding":"5px","flex":"1","display":"inline-block","boxSizing":"10px","color":"black"}}> 
                 <a  class = "fab fa-react fa-2x"
                     href="https://www.instagram.com/"
                     target="_blank"
@@ -70,7 +70,7 @@ const Contact= () => {
                     <FontAwesomeIcon icon={faInstagram} />
                 </a>
             </div>
-            <div style={{"padding":"5px","flex":"1","display":"inline-block","boxSizing":"10px"}}> 
+            <div style={{"padding":"5px","flex":"1","display":"inline-block","boxSizing":"10px","color":"black"}}> 
 
                 <a  class = "fab fa-react fa-2x"
                     href="https://www.youtube.com/"

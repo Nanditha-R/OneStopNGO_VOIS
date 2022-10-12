@@ -1,15 +1,15 @@
 
 :root {
-    --light: #eee;
+    --light: #FFE4E1;
     --dark:#0C2340;
-    --darker: #008E97;
+    --darker: #FFE4E1;
     --blue: #5F9EA0;
-    --crimson: #008E97;
+    --crimson: #FFE4E1;
   }
 
   
   body {
-    background-color: var(--darker);
+    background-color: 	#FFE4E1;
   }
   
   .App {

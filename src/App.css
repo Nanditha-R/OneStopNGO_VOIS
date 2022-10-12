@@ -1,9 +1,9 @@
 
 html {
-    --color-background: #008E97;
+    --color-background: #FFE4E1;
     --color-blue: hsl(208, 100%, 50%);
     --color-gray: #0C2340;
-    --color-white: white;
+    --color-white: #FFE4E1;
     --border-radius: 5px;
 
     background-color: var(--color-background);

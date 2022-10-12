@@ -36,7 +36,7 @@
   }
   
   .nav-links {
-    color: #fff;
+    color: black;
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
@@ -62,12 +62,12 @@
   
   .nav-item:hover:after {
     width: 100%;
-    background: #ffdd40;
+    background: teal;
   }
   
   .nav-item .active {
-    color: #ffdd40;
-    border: 1px solid #ffdd40;
+    color: teal;
+    border: 1px solid teal;
   }
   
   .nav-icon {

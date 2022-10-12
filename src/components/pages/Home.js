@@ -15,6 +15,7 @@ import "react-bootstrap"
 
 
 
+
 function Home() {
     const [ngos, setNgos] = useState([])
     const [form, setForm] = useState({
@@ -211,7 +212,9 @@ function Home() {
         members: [...form_v.members, ""]
       })
     }
+    
   
+
 
 
     return(
@@ -417,7 +420,8 @@ function Home() {
                     </li>
                 ))}
             </ul>
-            </>
+            
+      </>
     );
 }
 export default Home;
