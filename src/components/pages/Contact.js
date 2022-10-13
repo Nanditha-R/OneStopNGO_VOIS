@@ -45,7 +45,7 @@ const Contact= () => {
         <textarea style={{"width":"100%","padding": "12px 20px","margin": "8px 0","color":"black"}} placeholder="Your message" name="message" required />
       </div>
       <div>
-        <button style={{"width":"100%","padding": "12px 20px","margin": "8px 0", "backgroundColor":"#0C2340","color":"white"}} type="submit"> Send a message </button>
+        <button style={{"width":"100%","padding": "12px 20px","margin": "8px 0", "backgroundColor":"#5F9EA0;","color":"white"}} type="submit"> Send a message </button>
       </div>
     </form>
     <footer >

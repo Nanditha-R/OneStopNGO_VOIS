@@ -6,9 +6,9 @@ import { useState } from "react";
 function Events() {
 
     const usersData = [
-        {id:1,name:'Logesh',username:'jvlogesh'},
-        {id:2,name:'Ramesh',username:'rameshtr'},
-        {id:3,name:'Daniel',username:'danielradcliff'},
+        {id:1,name:'Nanditha',username:'nandy@gmail.com'},
+        {id:2,name:'Rochan',username:'srochank@gmail.com'},
+        {id:3,name:'Siddharth',username:'sid@gmail.com'},
     ];
     
     const addUser = (user)=>{
@@ -40,9 +40,9 @@ function Events() {
     
       return (
         <div className="container">
-      <h1>Come join our upcoming event</h1>
-      <div style={{"backgroundColor":"#5F9EA0","width":"560px","borderRadius":"20px","padding":"20px"}}>
-      <p style={{"color":"black","fontWeight":"bold","fontSize":"20px"}}>October drive: This Diwali, Let us say NO to fire crackers</p>
+      <h1>Come and Join us on our upcoming event!</h1>
+      <div style={{"backgroundColor":"#5F9EA0","width":"560px","borderRadius":"10px","padding":"15px"}}>
+      <p style={{"color":"black","fontSize":"20px"}}>October drive: This Diwali, Let us say NO to fire crackers</p>
       </div>
       
       <div className="flex-row">
